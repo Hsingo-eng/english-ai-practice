@@ -9,6 +9,7 @@ const port = process.env.PORT || 3000;
 // 設定中介軟體
 app.use(cors()); // 允許前端跨域請求
 app.use(express.json()); // 解析 JSON 格式的請求資料
+app.use(express.static(__dirname));
 
 // 初始化 Gemini API
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);

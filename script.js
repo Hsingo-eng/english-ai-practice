@@ -37,7 +37,7 @@ function resetUI() {
 getTopicBtn.addEventListener('click', async () => {
     topicDisplay.textContent = "AI 正在思考題目中...";
     try {
-        const response = await fetch('http://localhost:3000/api/get-topic', {
+        const response = await fetch('/api/get-topic', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ type: currentMode })
@@ -62,7 +62,7 @@ submitBtn.addEventListener('click', async () => {
     submitBtn.disabled = true;
 
     try {
-        const response = await fetch('http://localhost:3000/api/evaluate', {
+        const response = await fetch('/api/evaluate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ topic: currentTopic, userAnswer: answer })
