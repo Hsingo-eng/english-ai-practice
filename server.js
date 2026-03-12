@@ -14,7 +14,7 @@ app.use(express.static(__dirname));
 // 初始化 Gemini API
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 // 使用 gemini-1.5-flash 模型，速度快且適合文字任務
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" }); 
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" }); 
 
 // ==========================================
 // 路由 1：獲取 AI 提問 (Q&A) 或 議題 (Opinion)
