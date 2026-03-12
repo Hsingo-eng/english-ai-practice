@@ -1,0 +1,71 @@
+* { box-sizing: border-box; }
+body { 
+    font-family: "微軟正黑體", sans-serif; 
+    background-color: #f4f7f6; 
+    margin: 0; 
+    padding: 20px; 
+}
+.container { 
+    max-width: 600px; 
+    margin: 0 auto; 
+    background: white; 
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+}
+h1 { text-align: center; color: #333; }
+button { 
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: 0.3s; 
+}
+button:hover { opacity: 0.8; }
+
+/* 模式選擇按鈕 */
+.mode-selection { display: flex; gap: 10px; margin-bottom: 20px; }
+.mode-selection button { background-color: #e0e0e0; color: #333; flex: 1; }
+.mode-selection button.active { background-color: #4CAF50; color: white; }
+
+/* 題目區塊 */
+.topic-box { 
+    background-color: #e3f2fd; 
+    padding: 20px; 
+    border-radius: 8px; 
+    margin-bottom: 20px; 
+    text-align: center; 
+}
+#get-topic-btn { background-color: #2196F3; color: white; margin-bottom: 15px; }
+#topic-display { font-size: 18px; font-weight: bold; color: #1565c0; margin: 0;}
+
+/* 輸入區塊 */
+.input-box textarea { 
+    width: 100%; 
+    padding: 12px; 
+    font-size: 16px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    margin-bottom: 10px; 
+    resize: vertical;
+}
+#submit-btn { background-color: #ff9800; color: white; width: 100%; font-size: 18px; font-weight: bold;}
+
+/* 結果區塊排版 */
+.result-box { margin-top: 20px; border-top: 2px dashed #ccc; padding-top: 20px; }
+.hidden { display: none; }
+.corrected-block { 
+    background-color: #e8f5e9; 
+    padding: 15px; 
+    border-radius: 8px; 
+    margin-bottom: 15px; 
+    line-height: 1.5;
+}
+.explanation-block { 
+    background-color: #fff3e0; 
+    padding: 15px; 
+    border-radius: 8px; 
+    line-height: 1.5;
+}
+#speak-btn { background-color: #9c27b0; color: white; margin-top: 10px; }
