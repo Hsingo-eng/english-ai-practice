@@ -28,6 +28,39 @@ button:hover { opacity: 0.8; }
 .mode-selection { display: flex; gap: 10px; margin-bottom: 20px; }
 .mode-selection button { background-color: #e0e0e0; color: #333; flex: 1; }
 .mode-selection button.active { background-color: #4CAF50; color: white; }
+/* 針對包裝按鈕的區域進行置中對齊 */
+#mode-buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 1. 按鈕基本樣式與懸停效果 */
+#mode-buttons button {
+  padding: 10px 20px;
+  margin: 0 8px;
+  border: none;
+  border-radius: 8px; /* 柔和的圓角 */
+  background-color: #f1f3f5; /* 淺灰底色 */
+  color: #495057; /* 深灰字體，比純黑更有質感 */
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* 讓所有變化都有 0.3 秒的滑順過渡 */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 微小的立體陰影 */
+}
+
+/* 滑鼠游標停在按鈕上時的視覺回饋 */
+#mode-buttons button:hover {
+  background-color: #e2e6ea;
+  transform: translateY(-2px); /* 整個按鈕往上浮游 2 像素 */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 陰影加深，增強立體感 */
+}
+/* 2. 點擊後被掛上 active 類別的按鈕樣式 */
+#mode-buttons button.active {
+  background-color: #4dabf7; /* 亮藍色 */
+  color: white; /* 字體反白 */
+  box-shadow: 0 4px 12px rgba(77, 171, 247, 0.4); /* 帶有藍色的發光陰影 */
+  transform: translateY(-2px); /* 保持浮起狀態 */
+}
 
 /* 題目區塊 */
 .topic-box { 
@@ -39,6 +72,20 @@ button:hover { opacity: 0.8; }
 }
 #get-topic-btn { background-color: #2196F3; color: white; margin-bottom: 15px; }
 #topic-display { font-size: 18px; font-weight: bold; color: #1565c0; margin: 0;}
+/* 3. 題目卡片設計 */
+#questionDisplay {
+  margin: 20px auto; /* 上下留白，左右自動置中 */
+  padding: 30px 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08); /* 柔和的大陰影 */
+  font-size: 1.2rem;
+  color: #2c3e50;
+  text-align: center;
+  line-height: 1.6;
+  max-width: 600px; /* 限制最寬寬度，避免在大螢幕上文字拉太長 */
+  border-top: 5px solid #4dabf7; /* 頂部加一條藍色裝飾線呼應按鈕 */
+}
 
 /* 輸入區塊 */
 .input-box textarea { 
