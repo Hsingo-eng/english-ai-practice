@@ -33,22 +33,31 @@ function resetUI() {
     currentTopic = '';
 }
 
-// 向後端請求題目
-getTopicBtn.addEventListener('click', async () => {
-    topicDisplay.textContent = "AI 正在思考題目中...";
-    try {
-        const response = await fetch('/api/get-topic', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ type: currentMode })
-        });
-        const data = await response.json();
-        currentTopic = data.topic;
-        topicDisplay.textContent = currentTopic;
-    } catch (error) {
-        topicDisplay.textContent = "獲取失敗，請確認後端伺服器 (server.js) 是否有啟動。";
-    }
-});
+// 接收按鈕傳來的 mode 字串
+async function generateQuestion(selectedMode) {
+  try {
+    // 可以在這裡先讓畫面顯示「載入中...」
+    document.getElementById('questionDisplay').innerText = "AI 正在思考題目中...";
+
+    const response = await fetch('/api/get-question', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      // 把接收到的 selectedMode 傳給後端
+      body: JSON.stringify({ mode: selectedMode }) 
+    });
+
+    const data = await response.json();
+    
+    // 把後端回傳的題目顯示到畫面上
+    document.getElementById('questionDisplay').innerText = data.question;
+
+  } catch (error) {
+    console.error("發生錯誤:", error);
+    document.getElementById('questionDisplay').innerText = "產生題目失敗，請再試一次。";
+  }
+}
 
 // 送出回答讓 AI 批改
 submitBtn.addEventListener('click', async () => {

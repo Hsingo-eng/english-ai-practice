@@ -10,10 +10,15 @@
     <div class="container">
         <h1>給捲捲的 英文練習助手</h1>
 
-        <div class="mode-selection">
-            <button id="btn-qa" class="active">日常問答 (Q&A)</button>
-            <button id="btn-opinion">發表觀點 (Opinion)</button>
+        <div id="mode-buttons">
+            <button onclick="generateQuestion('daily_qa')">💬 日常問答</button>
+            
+            <button onclick="generateQuestion('opinion')">💡 發表觀點</button>
+            
+            <button onclick="generateQuestion('engineer_interview')">💻 模擬面試問答</button>
         </div>
+
+        <div id="questionDisplay">請點擊上方按鈕產生題目</div>
 
         <div class="topic-box">
             <button id="get-topic-btn">請 AI 出題</button>

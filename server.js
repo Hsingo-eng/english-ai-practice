@@ -16,31 +16,35 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 // 使用 gemini-1.5-flash 模型，速度快且適合文字任務
 const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" }); 
 
-// ==========================================
-// 路由 1：獲取 AI 提問 (Q&A) 或 議題 (Opinion)
-// ==========================================
-app.post('/api/get-topic', async (req, res) => {
-    try {
-        const { type } = req.body; // 接收前端傳來的練習類型 ('qa' 或 'opinion')
-        let prompt = "";
+app.post('/api/get-question', async (req, res) => {
+  const { mode } = req.body;
+  let systemPrompt = "";
 
-        if (type === 'qa') {
-            prompt = "你是一個英文老師。請用英文問我一個簡短的日常問題，讓我可以用一兩句話回答。只要輸出問題就好，不需要其他問候語。";
-        } else if (type === 'opinion') {
-            prompt = "你是一個英文老師。請用英文提出一個有趣且具爭議性的簡短議題（例如科技、環保、生活習慣），讓我發表觀點。只要輸出議題就好，不需要其他問候語。";
-        } else {
-            return res.status(400).json({ error: "無效的練習類型" });
-        }
+  // 根據前端傳來的三種模式，給予不同的 Prompt
+  if (mode === "opinion") {
+    // 1. 發表觀點模式
+    systemPrompt = "你是一位友善的英語老師。請出一個簡單、有趣且貼近日常生活的英文討論題，讓使用者練習表達個人觀點。主題請圍繞在：假設性情境、生活習慣、休閒娛樂、有趣新聞等。請用平易近人的語氣提問，避免政治或學術議題。請只輸出英文題目本身，不需要其他廢話。";
+    
+  } else if (mode === "engineer_interview") {
+    // 2. 工程師面試模式
+    systemPrompt = "你現在是一位外商科技公司的資深工程師兼面試官。請隨機詢問一個軟體工程師面試常見的 Behavioral Question (行為面試題) 或是關於團隊協作、解決技術困難的問題。請用專業但友善的語氣提問。請只輸出英文題目本身，不需要其他廢話。";
+    
+  } else {
+    // 3. 日常問答模式 (預設或 mode === "daily_qa")
+    // 請在這裡填入你原本「日常問答」使用的 Prompt
+    systemPrompt = "請提出一個適合中階英語學習者的日常英文問答題，例如詢問天氣、週末計畫或喜好。請只輸出英文題目本身。"; 
+  }
 
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        const text = response.text();
-        
-        res.json({ topic: text });
-    } catch (error) {
-        console.error("獲取題目時發生錯誤:", error);
-        res.status(500).json({ error: "伺服器發生錯誤" });
-    }
+  try {
+    // 呼叫 Gemini API 產生題目
+    const result = await model.generateContent(systemPrompt);
+    const question = result.response.text();
+    
+    res.json({ question: question });
+  } catch (error) {
+    console.error("API 錯誤:", error);
+    res.status(500).send("AI 產生題目失敗");
+  }
 });
 
 // ==========================================
