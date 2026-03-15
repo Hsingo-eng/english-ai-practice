@@ -11,19 +11,16 @@
         <h1>給捲捲的 英文練習助手</h1>
 
         <div id="mode-buttons">
-            <button onclick="generateQuestion('daily_qa')">💬 日常問答</button>
-            
-            <button onclick="generateQuestion('opinion')">💡 發表觀點</button>
-            
-            <button onclick="generateQuestion('engineer_interview')">💻 模擬面試問答</button>
-        </div>
+            <button id="btn-daily_qa" class="active" onclick="changeMode('daily_qa')">💬 日常問答</button>
+            <button id="btn-opinion" onclick="changeMode('opinion')">💡 發表觀點</button>
+            <button id="btn-engineer_interview" onclick="changeMode('engineer_interview')">💻 模擬面試問答</button>
+            </div>
 
-        <div id="questionDisplay">請點擊上方按鈕產生題目</div>
-
-        <div class="topic-box">
-            <button id="get-topic-btn">請 AI 出題</button>
-            <p id="topic-display">點擊上方按鈕獲取題目...</p>
-        </div>
+            <div class="你的藍底區塊class設定">
+            <button class="你的藍色大按鈕class設定" onclick="generateQuestion()">請 AI 出題</button>
+            
+            <div id="questionDisplay">請先選擇模式，然後點擊「請 AI 出題」獲取題目...</div>
+            </div>
 
         <div class="input-box">
             <textarea id="user-input" rows="4" placeholder="請在此輸入你的完整英文回答..."></textarea>

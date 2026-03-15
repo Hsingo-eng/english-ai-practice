@@ -12,6 +12,7 @@ let currentMode = 'qa';
 let currentTopic = '';
 
 // 切換練習模式
+let currentMode = 'daily_qa';
 btnQA.addEventListener('click', () => {
     currentMode = 'qa';
     btnQA.classList.add('active');
@@ -25,6 +26,16 @@ btnOpinion.addEventListener('click', () => {
     btnQA.classList.remove('active');
     resetUI();
 });
+// 2. 新增「切換模式」的函式
+function changeMode(selectedMode) {
+  currentMode = selectedMode; // 更新當前的模式記錄
+
+  // 把所有按鈕的 active 顏色清掉
+  document.querySelectorAll('#mode-buttons button').forEach(btn => btn.classList.remove('active'));
+  
+  // 幫剛剛被點擊的按鈕塗上 active 顏色
+  document.getElementById('btn-' + selectedMode).classList.add('active');
+}
 
 function resetUI() {
     topicDisplay.textContent = "點擊上方按鈕獲取題目...";
@@ -33,10 +44,9 @@ function resetUI() {
     currentTopic = '';
 }
 
-// 接收按鈕傳來的 mode 字串
-async function generateQuestion(selectedMode) {
+// 3. 修改原本的「產生題目」函式
+async function generateQuestion() {
   try {
-    // 可以在這裡先讓畫面顯示「載入中...」
     document.getElementById('questionDisplay').innerText = "AI 正在思考題目中...";
 
     const response = await fetch('/api/get-question', {
@@ -44,13 +54,11 @@ async function generateQuestion(selectedMode) {
       headers: {
         'Content-Type': 'application/json'
       },
-      // 把接收到的 selectedMode 傳給後端
-      body: JSON.stringify({ mode: selectedMode }) 
+      // 這裡直接讀取我們剛剛記住的 currentMode 變數，傳給後端
+      body: JSON.stringify({ mode: currentMode }) 
     });
 
     const data = await response.json();
-    
-    // 把後端回傳的題目顯示到畫面上
     document.getElementById('questionDisplay').innerText = data.question;
 
   } catch (error) {
