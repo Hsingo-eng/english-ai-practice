@@ -116,3 +116,30 @@ button:hover { opacity: 0.8; }
     line-height: 1.5;
 }
 #speak-btn { background-color: #9c27b0; color: white; margin-top: 10px; }
+
+/* AI 出題區塊的背景與排版 */
+.question-container {
+    background-color: #e3f2fd; /* 淺藍色背景 */
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* 藍色 AI 出題按鈕 */
+#generate-btn {
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.3s;
+}
+
+#generate-btn:hover {
+    background-color: #1976d2; /* 滑鼠移過去變深藍色 */
+}
