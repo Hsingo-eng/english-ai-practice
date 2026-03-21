@@ -32,7 +32,7 @@ function changeMode(selectedMode) {
 
 // 2. 重置畫面的函式
 function resetUI() {
-    document.getElementById('questionDisplay').innerText = "請點擊下方「請 AI 出題」獲取題目...";
+    document.getElementById('questionDisplay').innerText = "請點擊下方「請 AI 出題」獲取題目";
     userInput.value = '';
     resultBox.classList.add('hidden');
     currentTopic = ''; // 清空上一題的紀錄
@@ -41,7 +41,7 @@ function resetUI() {
 // 3. 呼叫後端產生題目的函式
 async function generateQuestion() {
     try {
-        document.getElementById('questionDisplay').innerText = "AI 正在思考題目中...";
+        document.getElementById('questionDisplay').innerText = "AI 正在思考題目中";
 
         const response = await fetch('/api/get-question', {
             method: 'POST',
@@ -79,7 +79,7 @@ submitBtn.addEventListener('click', async () => {
     }
 
     // 改變按鈕狀態，防止重複點擊
-    submitBtn.textContent = "AI 正在嚴格批改中...";
+    submitBtn.textContent = "AI 正在嚴格批改中";
     submitBtn.disabled = true;
 
     try {

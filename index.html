@@ -8,7 +8,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>給捲捲的 英文練習助手</h1>
+        <img src="logo.png" alt="網頁 Logo" class="logo">
+        <h1>給捲捲的<br>英文練習助手</h1>
 
         <div id="mode-buttons">
             <button id="btn-daily_qa" class="active" onclick="changeMode('daily_qa')">💬 日常問答</button>
@@ -18,11 +19,11 @@
 
         <div class="question-container">
             <button id="generate-btn" onclick="generateQuestion()">請 AI 出題</button>
-            <div id="questionDisplay">請先選擇模式，然後點擊「請 AI 出題」獲取題目...</div>
+            <div id="questionDisplay">請先選擇模式，然後點擊「請 AI 出題」獲取題目</div>
         </div>
 
         <div class="input-box">
-            <textarea id="user-input" rows="4" placeholder="請在此輸入你的完整英文回答..."></textarea>
+            <textarea id="user-input" rows="4" placeholder="請在此輸入你的完整英文回答"></textarea>
             <button id="submit-btn">送出批改</button>
         </div>
 
