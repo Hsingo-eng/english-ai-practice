@@ -243,13 +243,6 @@ header h1 {
     margin-bottom: 20px;
 }
 
-/* 在 `#mode-buttons` 內的小 Logo (頁籤左上角) */
-.tab-logo {
-    max-height: 40px; /* 設定頁籤 Logo 的小尺寸 */
-    width: auto;      /* 保持比例 */
-    margin-right: 10px; /* Logo 與第一個按鈕的距離 */
-}
-
 /* ==========================================
    手機版優化 (保留並微調)
    ========================================= */
@@ -281,12 +274,6 @@ header h1 {
         font-size: 14px;
         flex: 1;
         max-width: 100px;
-    }
-
-    /* 調整頁籤 Logo 在手機上的大小 */
-    .tab-logo {
-        max-height: 30px;
-        margin-right: 5px;
     }
 }
 /* 加在 @media (max-width: 600px) 的大括號裡面 */
