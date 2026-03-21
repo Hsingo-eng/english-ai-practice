@@ -199,43 +199,38 @@ button:hover { opacity: 0.8; }
 }
 
 /* ==========================================
-   新增 Header 樣式
+   調整後的 Header 樣式 (高度縮小)
    ========================================== */
 header {
     width: 100%;
-    background-color: #ffffff; /* 白色 Header 背景 */
-    border-bottom: 1px solid #eee; /* 底部的分界線 */
-    padding: 15px 20px; /* Header 的上下左右留白 */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 微小的立體陰影 */
-    position: sticky; /* 固定在頂部 */
+    background-color: #ffffff;
+    border-bottom: 1px solid #eee;
+    padding: 8px 20px; /* 【修改】上下留白從 15px 縮小到 8px，讓區塊變矮 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky;
     top: 0;
-    z-index: 1000; /* 確保 Header 不會被其他東西蓋住 */
+    z-index: 1000;
 }
 
 .header-content {
     display: flex;
-    align-items: center; /* Logo 和文字垂直置中 */
-    justify-content: flex-start; /* 全部靠左排列 */
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .header-logo {
-    max-height: 60px; /* 設定 Header Logo 的高度 */
-    width: auto;      /* 寬度自動依比例縮放 */
-    margin-right: 20px; /* Logo 與標題文字的距離 */
+    max-height: 40px; /* 【修改】Logo 高度跟著縮小，配合變矮的 Header */
+    width: auto;
+    margin-right: 15px;
 }
 
-/* 調整 Header 內標題的文字設定 */
 header h1 {
-    font-size: 1.8rem;
+    font-size: 22px; /* 【修改】原本大約 28px，縮小 6px 變成 22px */
     font-weight: bold;
     color: #333;
-    margin: 0; /* 移除原本的 margin */
+    margin: 0;
+    white-space: nowrap; /* 【新增】強制文字不換行，永遠保持一列 */
 }
-
-/* ==========================================
-   調整 Container 內標題區域 (因為已移除了，所以移除相關樣式)
-   ========================================== */
-/* 請刪除原本設定 .header-container 或 h1 (如果在container內) 的舊樣式 */
 
 /* ==========================================
    模式切換按鈕區塊 (調整 Logo)
@@ -294,3 +289,16 @@ header h1 {
         margin-right: 5px;
     }
 }
+/* 加在 @media (max-width: 600px) 的大括號裡面 */
+    header {
+        padding: 6px 15px; /* 手機版 Header 再稍微窄一點 */
+    }
+
+    .header-logo {
+        max-height: 30px; /* 手機版 Logo 再縮小一點 */
+        margin-right: 10px;
+    }
+
+    header h1 {
+        font-size: 16px; /* 【重要】手機版字體大幅縮小，確保能在一行內塞下 */
+    }
