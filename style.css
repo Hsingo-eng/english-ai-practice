@@ -193,3 +193,104 @@ button:hover { opacity: 0.8; }
         min-height: 80px; 
     }
 }
+/* 全域設定 */
+* {
+    box-sizing: border-box; /* 確保 padding 不會撐破容器 */
+}
+
+/* ==========================================
+   新增 Header 樣式
+   ========================================== */
+header {
+    width: 100%;
+    background-color: #ffffff; /* 白色 Header 背景 */
+    border-bottom: 1px solid #eee; /* 底部的分界線 */
+    padding: 15px 20px; /* Header 的上下左右留白 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 微小的立體陰影 */
+    position: sticky; /* 固定在頂部 */
+    top: 0;
+    z-index: 1000; /* 確保 Header 不會被其他東西蓋住 */
+}
+
+.header-content {
+    display: flex;
+    align-items: center; /* Logo 和文字垂直置中 */
+    justify-content: flex-start; /* 全部靠左排列 */
+}
+
+.header-logo {
+    max-height: 60px; /* 設定 Header Logo 的高度 */
+    width: auto;      /* 寬度自動依比例縮放 */
+    margin-right: 20px; /* Logo 與標題文字的距離 */
+}
+
+/* 調整 Header 內標題的文字設定 */
+header h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0; /* 移除原本的 margin */
+}
+
+/* ==========================================
+   調整 Container 內標題區域 (因為已移除了，所以移除相關樣式)
+   ========================================== */
+/* 請刪除原本設定 .header-container 或 h1 (如果在container內) 的舊樣式 */
+
+/* ==========================================
+   模式切換按鈕區塊 (調整 Logo)
+   ========================================== */
+#mode-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 讓 Logo 和按鈕垂直置中 */
+    gap: 15px; /* 保留之前的按鈕距離設定 */
+    margin-bottom: 20px;
+}
+
+/* 在 `#mode-buttons` 內的小 Logo (頁籤左上角) */
+.tab-logo {
+    max-height: 40px; /* 設定頁籤 Logo 的小尺寸 */
+    width: auto;      /* 保持比例 */
+    margin-right: 10px; /* Logo 與第一個按鈕的距離 */
+}
+
+/* ==========================================
+   手機版優化 (保留並微調)
+   ========================================= */
+@media (max-width: 600px) {
+    /* 微調，鎖住 body 高度，但內容區可滾動 */
+    html, body {
+        height: 100dvh;
+        overflow: hidden; 
+        margin: 0;
+    }
+    
+    .container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        overflow-y: auto; /* 內容區滾動 */
+    }
+
+    /* 手機版模式按鈕佈局 */
+    #mode-buttons {
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    /* 手機版縮小模式按鈕 */
+    #mode-buttons button {
+        padding: 8px;
+        font-size: 14px;
+        flex: 1;
+        max-width: 100px;
+    }
+
+    /* 調整頁籤 Logo 在手機上的大小 */
+    .tab-logo {
+        max-height: 30px;
+        margin-right: 5px;
+    }
+}

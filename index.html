@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>給捲捲的 英文練習助手</title>
+    <title>給捲捲的英文練習助手</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <img src="logo.png" alt="網頁 Logo" class="logo">
-        <h1>給捲捲的<br>英文練習助手</h1>
+    <header>
+        <div class="header-content">
+            <img src="logo.png" alt="Logo" class="header-logo">
+            <h1>給捲捲的英文練習助手</h1>
+        </div>
+    </header>
 
+    <div class="container">
         <div id="mode-buttons">
+            <img src="logo.png" alt="Tab Logo" class="tab-logo">
             <button id="btn-daily_qa" class="active" onclick="changeMode('daily_qa')">💬 日常問答</button>
             <button id="btn-opinion" onclick="changeMode('opinion')">💡 發表觀點</button>
             <button id="btn-engineer_interview" onclick="changeMode('engineer_interview')">💻 模擬面試問答</button>
